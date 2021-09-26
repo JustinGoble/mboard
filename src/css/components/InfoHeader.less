@@ -1,0 +1,41 @@
+@import "../colors.less";
+
+@media (max-width: 600px) {
+  .InfoHeader-header {
+    flex-direction: column;
+  }
+}
+
+.InfoHeader-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: @color-text-light;
+  padding: 0.5em 1.0em;
+
+  .InfoHeader-header-text {
+    display: inline;
+    padding: 0;
+    margin: 0 0.5em 0 0;
+    text-decoration: underline;
+    color: @color-text-light;
+  }
+
+  .InfoHeader-header-id {
+    color: @color-text-dim;
+  }
+
+  .InfoHeader-header-created {
+    .InfoHeader-header-created-timestamp {
+      color: @color-text-light;
+    }
+  }
+
+  .InfoHeader-header-status {
+    margin-left: 1.0em;
+    #op-state {
+      color: @color-text-light;
+    }
+  }
+}

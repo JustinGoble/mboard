@@ -1,0 +1,98 @@
+@import "../colors.less";
+
+.UserOperationList-container {
+  margin-top: 3em;
+  border: 2px solid  #d3d3d3;
+  border-radius: .5em;
+}
+
+.UserOperationList-main-header { 
+  letter-spacing: .5em;
+  font-size: 1em;
+  padding: 1em;
+}
+
+.UserOperationList-empty {
+  letter-spacing: .5em;
+  font-weight: bold;
+  padding: 2em;
+}
+
+.UserOperationList-op-style {
+  padding-left:1.75em;
+  text-align: left;
+}
+
+.UserOperationList-op-category {
+  padding-left: 1em;
+  color: @color-text-dim;
+}
+
+.UserOperationList-op-description {
+  display: flex;
+}
+
+.UserOperationList-desc-category {
+  flex : start;
+  padding-left: 2.75em;
+  color: @color-text-dim;
+}
+
+.UserOperationList-desc-value {
+  flex: start;
+  padding-left: .5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.UserOperationList-op-value {
+  padding-left: .5em;
+}
+
+.UserOperationList-op-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: @color-text-light;
+  padding: 0.5em 1.0em;
+
+}
+.UserOperationList-op-name {
+  padding-left:.75em;
+  font-size: 2em;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.UserOperationList-op-id {
+  font-size: 1em;
+  padding-left: 1em;
+  color: @color-text-dim;
+}
+
+.UserOperationList-row {
+  background-color: @color-background-grey;
+  width: 90%;
+  max-width: 50em;
+  margin: auto;
+  margin-top:1em;
+  margin-bottom: 1.5em;
+  padding: 1em;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  clip-path: 
+    polygon(
+      0% 0px,                 /* top left */
+      0px 0%,                 /* top left */
+      calc(100% - 40px) 0%,    /* top right */
+      100% 40px,               /* top right */
+      100% calc(100% - 0px),  /* bottom right */
+      calc(100% - 0px) 100%,  /* bottom right */
+      40px 100%,               /* bottom left */
+      0 calc(100% - 40px)      /* bottom left */
+    );
+}
+
+

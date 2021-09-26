@@ -1,0 +1,74 @@
+/v1/divisions:
+  get:
+    tags:
+      - division
+    summary: Returns all divisions
+    description: Returns all divisions. Paged API.
+    parameters:
+      - $ref: '#/components/parameters/queryPage'
+      - $ref: '#/components/parameters/queryLimit'
+    responses:
+      200:
+        description: Found divisions
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Division'
+      default:
+        $ref: '#/components/responses/error'
+  post:
+    tags:
+      - division
+    summary: Upserts a division
+    description: |
+      Upserts a division.
+
+      Properties `id`, `createdAt` and `updatedAt` will be ignored.
+    requestBody:
+      description: Division to create.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewDivision'
+    responses:
+      200:
+        description: Upserted division
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Division'
+      default:
+        $ref: '#/components/responses/error'
+
+/v1/divisions/{id}:
+  get:
+    tags:
+      - division
+    summary: Returns a single division
+    description: Returns a division based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathDivisionId'
+    responses:
+      200:
+        description: Found division
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Division'
+      default:
+        $ref: '#/components/responses/error'
+  delete:
+    tags:
+      - division
+    summary: Removes a division
+    description: Removes a division based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathDivisionId'
+    responses:
+      200:
+        description: OK
+      default:
+        $ref: '#/components/responses/error'

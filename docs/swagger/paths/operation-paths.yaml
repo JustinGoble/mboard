@@ -1,0 +1,124 @@
+/v1/operations:
+  get:
+    tags:
+      - operation
+    summary: Returns all operations
+    description: Returns all operations. Paged API System.
+    parameters:
+      - $ref: '#/components/parameters/queryPage'
+      - in: query
+        name: states
+        schema:
+          type: array
+          items:
+            type: string
+        description: |
+          An array containing all user selected states to filter the operations by.
+
+          If the array is empty, the states are not included in the query.
+        default: []
+    responses:
+      200:
+        description: Found operations
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      default:
+        $ref: '#/components/responses/error'
+  post:
+    tags:
+      - operation
+    summary: Upserts an operation
+    description: |
+      Upserts an operation.
+
+      Properties `id`, `createdAt` and `updatedAt` will be ignored.
+    requestBody:
+      description: Operation to upsert.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewOperation'
+    responses:
+      200:
+        description: Upserted operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operation'
+      default:
+        $ref: '#/components/responses/error'
+
+/v1/operations/{id}:
+  get:
+    tags:
+      - operation
+    summary: Returns a single operation
+    description: Returns an operation based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathOperationId'
+    responses:
+      200:
+        description: Found operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operation'
+      default:
+        $ref: '#/components/responses/error'
+  delete:
+    tags:
+      - operation
+    summary: Removes an operation
+    description: Removes an operation based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathOperationId'
+    responses:
+      200:
+        description: OK
+      default:
+        $ref: '#/components/responses/error'
+
+/v1/operations/{id}/assignments:
+  post:
+    tags:
+      - operation
+    summary: Upserts an operation assignment
+    description: |
+      Upserts an operation assignment.
+
+      Properties `id`, `createdAt` and `updatedAt` will be ignored.
+    requestBody:
+      description: Operation assignment to upsert.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewOpAssignment'
+    responses:
+      200:
+        description: Upserted operation assignment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpAssignment'
+      default:
+        $ref: '#/components/responses/error'
+
+/v1/operations/assignments/{id}:
+  delete:
+    tags:
+      - operation
+    summary: Removes an operation assignment
+    description: Removes an operation assignment based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathOpAssignmentId'
+    responses:
+      200:
+        description: OK
+      default:
+        $ref: '#/components/responses/error'

@@ -1,0 +1,82 @@
+@import "../colors.less";
+
+.OperationForm {
+  text-align: left;
+  width: 100%;
+  flex-grow: 1;
+  padding: 1em;
+  background-color: @color-background-grey;
+  color: @color-text-light;
+
+  @media (max-width: 600px) {
+    .OperationForm-header {
+      flex-direction: column;
+    }
+  }
+
+  .OperationForm-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: @color-text-light;
+    padding: 0.5em 1.0em;
+
+    .OperationForm-header-text {
+      display: inline;
+      padding: 0;
+      margin: 0 0.5em 0 0;
+      text-decoration: underline;
+      color: @color-text-light;
+    }
+
+    .OperationForm-header-id {
+      color: @color-text-dim;
+    }
+
+    .OperationForm-header-created {
+      .OperationForm-header-created-timestamp {
+        color: @color-text-light;
+      }
+    }
+
+    .OperationForm-header-status {
+      margin-left: 1.0em;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .OperationForm-info {
+      flex-direction: column;
+    }
+  }
+
+  .OperationForm-info {
+    display: flex;
+    align-items: stretch;
+
+    @media (min-width: 600px) {
+      .OperationForm-info-left {
+        width: 0;
+        flex-grow: 2;
+      }
+    }
+
+    .OperationForm-info-left {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5em 1.0em;
+    }
+
+    @media (min-width: 600px) {
+      .OperationForm-info-right {
+        width: 0;
+        flex-grow: 5;
+      }
+    }
+
+    .OperationForm-info-right {
+      padding: 0.5em 1.0em;
+    }
+  }
+}

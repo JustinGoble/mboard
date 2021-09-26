@@ -1,0 +1,73 @@
+@import "../colors.less";
+
+@media (min-width: 600px) {
+  .OperationListObject-infoheader {
+    margin-right: 4em;
+  }
+}
+
+.OperationListObject {
+  background-color: @color-background-grey;
+  margin: .75em;
+  padding: .75em;
+  color: #fff;
+  clip-path: 
+    polygon(
+      0% 0px,                 /* top left */
+      0px 0%,                 /* top left */
+      calc(100% - 40px) 0%,    /* top right */
+      100% 40px,               /* top right */
+      100% calc(100% - 0px),  /* bottom right */
+      calc(100% - 0px) 100%,  /* bottom right */
+      40px 100%,               /* bottom left */
+      0 calc(100% - 40px)      /* bottom left */
+    );
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .OperationListObject-info {
+    flex-direction: column;
+  }
+}
+
+.OperationListObject-info {
+  display: flex;
+  align-items: stretch;
+
+  @media (min-width: 600px) {
+    .OperationListObject-info-left {
+      width: 0;
+      flex-grow: 1;
+    }
+  }
+
+  .OperationListObject-info-left {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    margin-left: 2em;
+  }
+
+  @media (min-width: 600px) {
+    .OperationListObject-info-right {
+      width: 0;
+      flex-grow: 2;
+    }
+  }
+
+  .OperationListObject-info-right {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    margin-left: 2em;
+  }
+}
+
+.OperationListObject-open-assignments {
+  direction: rtl;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: .5em;
+  padding-top: 2px;
+}

@@ -1,0 +1,2 @@
+DROP DATABASE ody_management_platform;
+DROP DATABASE ody_management_platform_test;

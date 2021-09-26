@@ -1,0 +1,74 @@
+/v1/branches:
+  get:
+    tags:
+      - branch
+    summary: Returns all branches
+    description: Returns all branches. Paged API.
+    parameters:
+      - $ref: '#/components/parameters/queryPage'
+      - $ref: '#/components/parameters/queryLimit'
+    responses:
+      200:
+        description: Found branches
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Branch'
+      default:
+        $ref: '#/components/responses/error'
+  post:
+    tags:
+      - branch
+    summary: Upserts a branch
+    description: |
+      Upserts a branch.
+
+      Properties `id`, `createdAt` and `updatedAt` will be ignored.
+    requestBody:
+      description: Branch to create.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewBranch'
+    responses:
+      200:
+        description: Upserted branch
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      default:
+        $ref: '#/components/responses/error'
+
+/v1/branches/{id}:
+  get:
+    tags:
+      - branch
+    summary: Returns a single branch
+    description: Returns a branch based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathBranchId'
+    responses:
+      200:
+        description: Found branch
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      default:
+        $ref: '#/components/responses/error'
+  delete:
+    tags:
+      - branch
+    summary: Removes a branch
+    description: Removes a branch based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathBranchId'
+    responses:
+      200:
+        description: OK
+      default:
+        $ref: '#/components/responses/error'

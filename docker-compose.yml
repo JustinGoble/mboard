@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10.4
+    volumes:
+      - database:/var/lib/postgres/data
+      - ./tools/init-database.sql:/docker-entrypoint-initdb.d/init-database.sql
+    ports:
+      - '5432:5432'
+    environment:    
+      POSTGRES_PASSWORD: ody
+      POSTGRES_USER: ody
+
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - database:/data
+volumes:
+  database:
